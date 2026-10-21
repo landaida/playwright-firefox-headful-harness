@@ -1,0 +1,5 @@
+[
+  { "id": "example-home", "url": "https://example.com", "session": "demo" },
+  { "id": "httpbin-headers", "url": "https://httpbin.org/headers", "session": "demo" },
+  { "id": "httpbin-ip", "url": "https://httpbin.org/ip", "session": "other" }
+]

@@ -1,0 +1,22 @@
+services:
+  harness:
+    build: .
+    init: true
+    shm_size: "1gb"            # Firefox needs more than the 64MB default /dev/shm
+    environment:
+      VNC_PASSWORD: "${VNC_PASSWORD:?set VNC_PASSWORD in .env}"
+      DISPLAY: ":99"
+      PROXY_SERVER: "${PROXY_SERVER:-}"
+      PROXY_USERNAME: "${PROXY_USERNAME:-}"
+      PROXY_PASSWORD: "${PROXY_PASSWORD:-}"
+      PROXY_PIN_SESSION: "${PROXY_PIN_SESSION:-}"
+      USER_AGENT: "${USER_AGENT:-}"
+      VIEWPORT: "${VIEWPORT:-1440x900}"
+      CONCURRENCY: "${CONCURRENCY:-2}"
+      PER_HOST_DELAY_MS: "${PER_HOST_DELAY_MS:-1000}"
+    ports:
+      - "127.0.0.1:5900:5900"   # VNC, bound to localhost; tunnel over SSH to watch remotely
+    volumes:
+      - ./profiles:/app/profiles
+      - ./out:/app/out
+      - ./jobs.example.json:/app/jobs.example.json:ro

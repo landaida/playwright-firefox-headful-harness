@@ -1,0 +1,14 @@
+{
+  "name": "playwright-firefox-headful-harness",
+  "version": "1.0.0",
+  "description": "Headful Playwright + Firefox on Xvfb in Docker, with persistent profiles, per-session proxies, quiet prefs and a JSONL job worker.",
+  "main": "src/worker.js",
+  "bin": { "pfh-worker": "src/worker.js" },
+  "scripts": {
+    "start": "node src/worker.js --jobs jobs.example.json",
+    "check": "node --check src/worker.js && node --check src/browser.js && node --check src/firefoxPrefs.js && node --check src/hostStats.js"
+  },
+  "engines": { "node": ">=20" },
+  "dependencies": { "playwright": "1.49.1" },
+  "license": "MIT"
+}
